@@ -70,19 +70,19 @@ public class Monster extends Creature{
 }
 ```
 ## 主要体现的设计原则
-- SRP 单一职责原则
+### SRP 单一职责原则
 如一些辅助类Attribute、Position等，引起他们变化的只有一个原因，即属性或位置的改变。再例如FormationProvider，只负责对外提供Formation对象，没有其他职责。
-- LSP Liskov替换法则
+### LSP Liskov替换法则
 派生类型应当可以替换其基类，这一点在物体相关的类的继承上可以得到体现。
-- ISP 接口隔离原则
+### ISP 接口隔离原则
 接口应精简单一，体现在Formation接口和Runnable接口，只需要重写一个方法。
-- DIP 依赖倒置原则
+### DIP 依赖倒置原则
 要求面向抽象编程，具体而言所有的继承都应终止于接口或虚类，由UML类图可见，所有的继承终止于接口Formation、Runnable和虚类CVMObject以及Creature。
-- CARP 合成/聚合复用原则
+### CARP 合成/聚合复用原则
 体现在GameSystem聚合了一些类的对象。
 
 ## 使用到的Java机制
-- 异常处理
+### 异常处理
 在读写文件和线程相关的代码处大量使用了异常处理机制。
 
 ```java
@@ -106,7 +106,7 @@ public void run() {
 	}
 }
 ```
-- 集合类型与泛型
+### 集合类型与泛型
 如Game类中存储葫芦娃和妖怪对象的链表以及format的形参：
 
 ```java
@@ -121,7 +121,7 @@ public interface Formation {
 	public void format(Game game, List<? extends Creature> creatures, boolean left);
 }
 ```
-- 注解
+### 注解
 重写基类方法、测试、作者和版本信息等。
 
 ```java
@@ -145,7 +145,7 @@ public void testLife() {...}
  * @version 1.0.0
  */
 ```
-- 输入输出
+### 输入输出
 读写文件。
 
 ```java
@@ -172,7 +172,7 @@ public static void read(File file) {
 }
 ```
 
-- 线程同步
+### 线程同步
 使用CyclicBarrier对生物体线程、伤害计算线程和位置管理线程进行同步，具体而言每个对象都有GlobalSynchronizer对象创建的同一个CyclicBarrier对象的引用，到达屏障点后等待。另外，在伤害计算线程中为避免出现同一生物体死亡后仍受到攻击的情况，需要对计算伤害的方法进行加锁。在此说明一点，生物体位置同步在本实现中是不需要的，因为每回合的位置由PositionManager计算给出而不是生物体自行判断，不会出现冲突。
 
 
