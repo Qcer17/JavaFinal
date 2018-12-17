@@ -138,8 +138,19 @@ public class PositionManager {
 		int[] dy = new int[] { 0, 1, 0, -1 };
 		Direction[] directions = new Direction[] { Direction.RIGHT, Direction.DOWN, Direction.LEFT, Direction.UP };
 		Position p = c.getPositionInt();
-		toBeFilled[index] = Direction.CENTER;
-
+		toBeFilled[index]=Direction.CENTER;
+		for (int i = 0; i < 4; i++) {
+			int tx = (int) p.getX() + dx[i];
+			int ty = (int) p.getY() + dy[i];
+			if ((tx < 0 || tx >= GameSystem.getN()) || (ty < 0 || ty >= GameSystem.getM()))
+				continue;
+			if (occupied[ty][tx])
+				continue;
+			int id = board[ty][tx];
+			if(id==-1) {
+				toBeFilled[index]=directions[i];
+			}
+		}
 		for (int i = 0; i < 4; i++) {
 			int tx = (int) p.getX() + dx[i];
 			int ty = (int) p.getY() + dy[i];
