@@ -1,6 +1,6 @@
 # 设计说明
 ## 效果图
-![1](https://github.com/Qcer17/JavaFinal/blob/master/img/1.png)
+![1](https://github.com/Qcer17/JavaFinal/blob/master/img/1.PNG)
 ![2](https://github.com/Qcer17/JavaFinal/blob/master/img/2.png)
 ## 主要设计思路
 - 根据作业要求，实现的场景为：在13×15的地图上，双方在两侧按阵型排列，阵型可选择，地图两侧显示血量，战斗开始后每回合双方朝敌人前进，在一定视野范围内且在子弹射击范围内时发现敌人后发射子弹，被击中掉血，血量为0后头像翻转静止，直到一方全部死亡。规定每回合各生物体移动一格或发射子弹或静止，同时只有在某回合子弹与敌方生物体恰好在某一格遭遇才进行伤害计算，在半格处遭遇不认为子弹击中敌人。
