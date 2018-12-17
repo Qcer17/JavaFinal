@@ -1,6 +1,7 @@
 # 设计说明
 ## 效果图
-
+![1](https://github.com/Qcer17/JavaFinal/tree/master/img/1.png)
+![2](https://github.com/Qcer17/JavaFinal/tree/master/img/2.png)
 ## 主要设计思路
 - 根据作业要求，实现的场景为：在13×15的地图上，双方在两侧按阵型排列，阵型可选择，地图两侧显示血量，战斗开始后每回合双方朝敌人前进，在一定视野范围内且在子弹射击范围内时发现敌人后发射子弹，被击中掉血，血量为0后头像翻转静止，直到一方全部死亡。规定每回合各生物体移动一格或发射子弹或静止，同时只有在某回合子弹与敌方生物体恰好在某一格遭遇才进行伤害计算，在半格处遭遇不认为子弹击中敌人。
 - 该次作业实际上可以看成是一种游戏，既然是游戏，那么每场游戏由系统固定其属性，如战场大小、角色数量、随机数种子等等，之后就可以生成一场游戏。于是很自然地可以抽象出两个对象Game和GameSystem，Game为每场游戏其本身，GameSystem则管理游戏、确定其各种属性、处理游戏中产生的事件、保存和读取游戏等。
@@ -13,8 +14,11 @@
 - 因为每场游戏的结果在本实现中不依赖于线程调度（位置更新由PositionManager统一处理，生物体线程只需根据处理结果移动即可），所以保存和读取游戏的功能可以直接通过写入和读取游戏初始化参数来完成。
 ## UML类图
 - 物体
+![3](https://github.com/Qcer17/JavaFinal/tree/master/img/object.png)
 - 阵型
+![4](https://github.com/Qcer17/JavaFinal/tree/master/img/formation.png)
 - 游戏系统
+![5](https://github.com/Qcer17/JavaFinal/tree/master/img/gamesystem.png)
 ## 面向对象的体现
 ### 封装
 封装对外隐藏内部的实现，于是保证了内部实现的变化不会影响外部使用，几乎所有public修饰的方法都具有这一特征。
@@ -196,4 +200,9 @@ public class AttackManager implements Runnable{
 ```
 ## 单元测试
 对属性更新、位置更新、寻路过程进行了单元测试。
-
+## 使用说明
+- 空格：开始，游戏结束后重置
+- S：保存当前游戏，可在任何时刻进行
+- L: 读取游戏，可在任何时刻进行，读取后按空格开始播放
+- 两侧按钮：改变阵型
+- 提供的一个游戏记录是src同级目录下的GameFile文件，使用L进行读取即可
