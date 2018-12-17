@@ -14,11 +14,11 @@
 - 因为每场游戏的结果在本实现中不依赖于线程调度（位置更新由PositionManager统一处理，生物体线程只需根据处理结果移动即可），所以保存和读取游戏的功能可以直接通过写入和读取游戏初始化参数来完成。
 ## UML类图
 - 物体
-![3](https://github.com/Qcer17/JavaFinal/blob/master/img/object.PNG)
+![3](https://github.com/Qcer17/JavaFinal/blob/master/img/object.png)
 - 阵型
-![4](https://github.com/Qcer17/JavaFinal/blob/master/img/formation.PNG)
+![4](https://github.com/Qcer17/JavaFinal/blob/master/img/formation.png)
 - 游戏系统
-![5](https://github.com/Qcer17/JavaFinal/blob/master/img/gamesystem.PNG)
+![5](https://github.com/Qcer17/JavaFinal/blob/master/img/gamesystem.png)
 ## 面向对象的体现
 ### 封装
 封装对外隐藏内部的实现，于是保证了内部实现的变化不会影响外部使用，几乎所有public修饰的方法都具有这一特征。
